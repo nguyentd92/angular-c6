@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <h1>TODO LIST</h1>
+
+  <div class='textbox'>
+    <div class="icon">
+      <i class="fas fa-clipboard-list"></i>
+    </div>
+
+    <input type="text" placeholder="Enter your next task" (keydown.enter)="addTodo($event)">
+
+    <button (click)="addTodo('From click')"><i class="fas fa-plus-circle"></i></button>
+  </div>
+
+  <div class="todo-list">
+    <div class="header">
+      <div class="icon">
+        <i class="fas fa-tasks"></i>
+      </div>
+
+      <div class="blank"></div>
+      <button class="filter-button">Todo</button>
+      <button class="filter-button">DONE</button>
+      <button class="filter-button">all</button>
+    </div>
+
+    <div class="list">
+      <div *ngFor="let item of todos" class="todo-item">
+        <div class="icon">
+          <button class='done-button' (click)="toggleDone(item)">
+          <i *ngIf="item.done; else notDone" class="fas fa-check"></i>
+          </button>
+
+          <ng-template #notDone>
+            <i class="fas fa-check-double"></i>
+          </ng-template>
+        </div>
+        <h2>{{ item.title }}</h2>
+        <button class='remove-button' (click)="remove(item)">
+          <i class="fas fa-times"></i>
+          <!-- <i class="fas fa-undo"></i> -->
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

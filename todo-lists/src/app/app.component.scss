@@ -1,0 +1,147 @@
+$primaryColor: rgb(27, 128, 329);
+$iconSize: 17px;
+
+h1 {
+  color: white;
+}
+
+.wrapper {
+  margin: auto;
+  padding-top: 10vh;
+  width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textbox {
+  height: 32px;
+  width: 100%;
+  background-color: white;
+
+  display: flex;
+  justify-content: space-between;
+
+  input {
+    flex-grow: 1;
+    outline: none;
+    border: none;
+  }
+
+  .icon {
+    font-size: $iconSize;
+
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primaryColor;
+  }
+
+  button {
+    font-size: $iconSize;
+    color: $primaryColor;
+
+    border: none;
+    width: 40px;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      color: tomato;
+      cursor: pointer;
+    }
+  }
+}
+
+
+.todo-list {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: white;
+
+  .header {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .blank {
+      flex-grow: 1;
+    }
+
+    .filter-button {
+      color: $primaryColor;
+      background-color: white;
+      border: none;
+      margin-right: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $primaryColor;
+    }
+  }
+
+  .todo-item {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .blank {
+      flex-grow: 1;
+    }
+
+    .filter-button {
+      color: $primaryColor;
+      background-color: white;
+      border: none;
+      margin-right: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      flex-grow: 1;
+      font-size: 1rem;
+    }
+
+    .icon {
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $primaryColor;
+    }
+
+    .remove-button {
+      color: red;
+      background-color: white;
+      border: none;
+      margin-right: 0.25rem;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .done-button {
+      cursor: pointer;
+      color: $primaryColor;
+      background-color: white;
+      border: none;
+      margin-right: 0.25rem;
+      text-transform: uppercase;
+
+      &:hover {
+        color: tomato;
+      }
+    }
+  }
+}
