@@ -89,6 +89,11 @@ h1 {
       align-items: center;
       color: $primaryColor;
     }
+
+    button.currentMode {
+      border-radius: 0.2rem;
+      background-color: rgba(#2888e2, 0.2);
+    }
   }
 
   .todo-item {
@@ -96,6 +101,10 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &.done {
+      opacity: 0.5;
+    }
 
     .blank {
       flex-grow: 1;
@@ -109,8 +118,19 @@ h1 {
       text-transform: uppercase;
     }
 
-    h2 {
+    .title-wrapper {
       flex-grow: 1;
+
+      input {
+        color: $primaryColor;
+
+        border: none;
+        outline: none;
+      }
+    }
+
+    p {
+      color: $primaryColor;
       font-size: 1rem;
     }
 

@@ -18,28 +18,47 @@
       </div>
 
       <div class="blank"></div>
-      <button class="filter-button">Todo</button>
-      <button class="filter-button">DONE</button>
-      <button class="filter-button">all</button>
+      <button class="filter-button" [ngClass]="{ currentMode: filterMode === 'todo' }" (click)="filterMode = 'todo'">Todo</button>
+      <button class="filter-button" [ngClass]="{ currentMode: filterMode === 'done' }" (click)="filterMode = 'done'">DONE</button>
+      <button class="filter-button" [ngClass]="{ currentMode: filterMode === 'all' }" (click)="filterMode = 'all'">all</button>
     </div>
 
     <div class="list">
-      <div *ngFor="let item of todos" class="todo-item">
+      <div *ngFor="let item of todoList" class="todo-item" [ngClass]="{
+        done: item.done,
+        notDone: !item.done,
+        abc: true
+      }" [ngStyle]="{ textDecoration: item.done ? 'line-through' : 'none'}">
         <div class="icon">
           <button class='done-button' (click)="toggleDone(item)">
-          <i *ngIf="item.done; else notDone" class="fas fa-check"></i>
+            <i *ngIf="item.done; else notDone" class="fas fa-check"></i>
           </button>
 
           <ng-template #notDone>
             <i class="fas fa-check-double"></i>
           </ng-template>
         </div>
-        <h2>{{ item.title }}</h2>
-        <button class='remove-button' (click)="remove(item)">
+
+        <div class="title-wrapper">
+          <p *ngIf="item !== todoEdit; else edit" (click)="openEdit(item)">{{ item.title }}</p>
+
+          <ng-template #edit>
+            <input type="text" (keydown.enter)="doneEdit($event)" [value]="item.title" />
+          </ng-template>
+        </div>
+
+        <button *ngIf="item !== todoEdit; else editUndo" class='remove-button' (click)="remove(item)">
           <i class="fas fa-times"></i>
-          <!-- <i class="fas fa-undo"></i> -->
         </button>
+
+        <ng-template #editUndo>
+          <button class='remove-button' (click)="undo()">
+            <i class="fas fa-undo"></i>
+          </button>
+        </ng-template>
       </div>
     </div>
   </div>
+
+  <pre>{{ todos | json }}</pre>
 </div>

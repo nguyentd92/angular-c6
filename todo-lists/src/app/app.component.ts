@@ -22,8 +22,19 @@ const INITIAL_TODOS: Array<Todo> = [
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todos';
   todos: Todo[] = INITIAL_TODOS;
+  todoEdit: Todo | null = null;
+  filterMode: 'todo' | 'done' | 'all' = 'all';
+
+  get todoList(): Todo[] {
+    if(this.filterMode === 'done')
+      return this.todos.filter(todo => todo.done)
+
+    if(this.filterMode === 'todo')
+      return this.todos.filter(todo => !todo.done)
+
+    return this.todos;
+  }
 
   addTodo(event: any): void {
     this.todos.push({
@@ -40,5 +51,21 @@ export class AppComponent {
 
   remove(todo: Todo): void {
     this.todos = this.todos.filter(t => t !== todo)
+  }
+
+  openEdit(todo: Todo): void {
+    this.todoEdit = todo;
+  }
+
+  undo(): void {
+    this.todoEdit = null;
+  }
+
+  doneEdit(event: any): void {
+    const todoEdit = this.todoEdit as Todo;
+
+    todoEdit.title = event.target.value;
+
+    this.todoEdit = null;
   }
 }
