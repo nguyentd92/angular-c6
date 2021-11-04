@@ -1,0 +1,71 @@
+$primaryColor: rgb(27, 128, 329);
+$iconSize: 17px;
+
+.todo-item {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.done {
+    opacity: 0.5;
+  }
+
+  .blank {
+    flex-grow: 1;
+  }
+
+  .filter-button {
+    color: $primaryColor;
+    background-color: white;
+    border: none;
+    margin-right: 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .title-wrapper {
+    flex-grow: 1;
+
+    input {
+      color: $primaryColor;
+
+      border: none;
+      outline: none;
+    }
+  }
+
+  p {
+    color: $primaryColor;
+    font-size: 1rem;
+  }
+
+  .icon {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primaryColor;
+  }
+
+  .remove-button {
+    color: red;
+    background-color: white;
+    border: none;
+    margin-right: 0.25rem;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .done-button {
+    cursor: pointer;
+    color: $primaryColor;
+    background-color: white;
+    border: none;
+    margin-right: 0.25rem;
+    text-transform: uppercase;
+
+    &:hover {
+      color: tomato;
+    }
+  }
+}
