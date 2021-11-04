@@ -1,20 +1,6 @@
 import { Component } from '@angular/core';
 import { Todo } from './models/todo.model';
-
-const INITIAL_TODOS: Array<Todo> = [
-  {
-    done: true,
-    title: 'Shopping',
-  },
-  {
-    done: false,
-    title: 'Workout',
-  },
-  {
-    done: false,
-    title: 'Do Exercises',
-  }
-]
+import { TodosService } from './services/todos.service';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +8,17 @@ const INITIAL_TODOS: Array<Todo> = [
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  todos: Todo[] = INITIAL_TODOS;
   todoEdit: Todo | null = null;
   filterMode: 'todo' | 'done' | 'all' = 'all';
+  todos: Todo[] = [];
+
+  constructor(private todosService: TodosService) {
+    this.todos = this.todosService.todos
+  }
+
+  ngOnChanges() {
+    console.log('change ', this.todos)
+  }
 
   get todoList(): Todo[] {
     if(this.filterMode === 'done')
