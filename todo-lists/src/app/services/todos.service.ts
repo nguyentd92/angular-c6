@@ -13,6 +13,10 @@ const INITIAL_TODOS: Array<Todo> = [
   {
     done: false,
     title: 'Do Exercises',
+  },
+  {
+    done: false,
+    title: 'Do Exercises 1',
   }
 ]
 
@@ -22,11 +26,19 @@ const INITIAL_TODOS: Array<Todo> = [
 export class TodosService {
   todos: Todo[] = INITIAL_TODOS;
 
-  constructor() { }
+  add(todo: Todo): void {
+    this.todos.push(todo)
+  }
+
+  update(todo: Todo, newTodo: Todo): void {
+    this.todos.splice(this.todos.indexOf(todo), 1, newTodo)
+  }
+
+  toggleTodoStatus(todo: Todo): void {
+    todo.done = !todo.done;
+  }
 
   remove(todo: Todo): void {
     this.todos.splice(this.todos.indexOf(todo), 1);
-    
-    console.log('remove ', this.todos)
   }
 }

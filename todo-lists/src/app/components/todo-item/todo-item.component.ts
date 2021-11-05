@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Todo } from 'src/app/models/todo.model';
 import { TodosService } from 'src/app/services/todos.service';
 
@@ -8,23 +8,37 @@ import { TodosService } from 'src/app/services/todos.service';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent {
-  @Input() item: Todo = {
+  @Input() todo: Todo = {
     title: 'Todo item',
     done: false
   }
 
-  @Output() onRemove: EventEmitter<void>= new EventEmitter<void>();
+  newTitle: string = '';
+  editMode: boolean = false;
 
   constructor(private todosService: TodosService) { }
 
-  ngOnInit(): void {
-  }
-
   toggleDone(): void {
-    this.item.done = !this.item.done;
+    this.todosService.toggleTodoStatus(this.todo);
   }
 
-  removeFromChild(): void {
-    this.todosService.remove(this.item)
+  update(): void {
+    this.editMode = false;
+    // Update nội dung title của todo item
+    this.todo.title = this.newTitle;
+  }
+
+  undo(): void {
+    // Huỷ form
+    this.editMode = false;
+  }
+
+  openEdit(): void {
+    this.newTitle = this.todo.title;
+    this.editMode = true;
+  }
+
+  remove(): void {
+    this.todosService.remove(this.todo);
   }
 }
