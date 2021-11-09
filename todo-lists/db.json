@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "done": true,
+      "title": "Shopping"
+    },
+    {
+      "id": 2,
+      "done": true,
+      "title": "Workout"
+    },
+    {
+      "id": 3,
+      "done": false,
+      "title": "Do Exercises 003"
+    },
+    {
+      "id": 4,
+      "done": false,
+      "title": "Do Exercises 004"
+    }
+  ]
+}

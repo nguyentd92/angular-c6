@@ -24,8 +24,11 @@ export class TodoItemComponent {
 
   update(): void {
     this.editMode = false;
-    // Update nội dung title của todo item
-    this.todo.title = this.newTitle;
+
+    this.todosService.update(this.todo, {
+      ...this.todo,
+      title: this.newTitle
+    })
   }
 
   undo(): void {
