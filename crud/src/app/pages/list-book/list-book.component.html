@@ -1,0 +1,6 @@
+<div *ngFor="let book of books; index as i">
+  <div>{{ i + 1 }}</div>
+  <div>{{ book.title }}</div>
+  <div>{{ book.author }}</div>
+  <div>{{ book.category?.name }}</div>
+</div>

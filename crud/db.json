@@ -1,0 +1,26 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Book 1",
+      "author": "Author Book 1",
+      "price": 50000,
+      "category": {
+        "id": 1,
+        "title": "Category 1"
+      }
+    },
+    {
+      "title": "Book Demo CG 1",
+      "author": "Author's Book Demo CG 1",
+      "price": 50000,
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "Category 1"
+    }
+  ]
+}
