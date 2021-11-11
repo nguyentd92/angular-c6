@@ -11,6 +11,7 @@ export class BookService {
   constructor(
     private httpClient: HttpClient
   ) {
+    this.load();
   }
 
   load(): void {
@@ -19,6 +20,14 @@ export class BookService {
         this.books.splice(0);
         this.books.push(...response)
       })
+  }
+
+  getOne(id: number | null): Book | undefined {
+    if(id === null) {
+      return undefined;
+    }
+
+    return this.books.find(book => book.id === id)
   }
 
   create(book: Book): void {
@@ -31,8 +40,8 @@ export class BookService {
       .subscribe(_ => this.load())
   }
 
-  delete(book: Book): void {
-    this.httpClient.delete(`books/${book.id}`)
+  delete(bookId: string): void {
+    this.httpClient.delete(`books/${bookId}`)
       .subscribe(_ => this.load())
   }
 }

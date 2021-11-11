@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/models/book.model';
+import { Category } from 'src/app/models/category.model';
 import { BookService } from 'src/app/services/book.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-create-book',
@@ -10,6 +13,7 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class CreateBookComponent implements OnInit {
   form!: FormGroup;
+  categories: Category[] = [];
 
   control(controlName: string): AbstractControl {
     return this.form.controls[controlName];
@@ -17,7 +21,9 @@ export class CreateBookComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private bookService: BookService
+    private bookService: BookService,
+    private categoryService: CategoryService,
+    private router: Router
   ) { }
 
   ngOnInit(): void { // Lifecycle Hooks
@@ -27,20 +33,28 @@ export class CreateBookComponent implements OnInit {
       price: [40000, [Validators.required, Validators.min(5000)]],
       categoryId: [null]
     })
+
+    this.categories = this.categoryService.categories;
   }
 
   submit(): void {
     if (this.form.invalid)
       alert('Form is not valid')
 
-    const { title, author, price } = this.form.value;
+    const { title, author, price, categoryId } = this.form.value;
+
+    const category = this.categories.find(cat => cat.id == categoryId)
 
     const book: Book = {
       title: title,
       author: author,
-      price: price
+      price: price,
+      category
     }
 
     this.bookService.create(book);
+
+    // Điều hướng về trang gốc
+    this.router.navigateByUrl('/');
   }
 }

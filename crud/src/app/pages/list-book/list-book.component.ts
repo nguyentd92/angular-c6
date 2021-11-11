@@ -15,5 +15,4 @@ export class ListBookComponent implements OnInit {
   ngOnInit(): void {
     this.books = this.bookService.books;
   }
-
 }

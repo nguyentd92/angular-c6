@@ -1,26 +1,66 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Book 1",
-      "author": "Author Book 1",
+      "id": 2,
+      "title": "Book Demo CG 1 Editted",
+      "author": "Author's Book Demo CG 1",
       "price": 50000,
       "category": {
-        "id": 1,
-        "title": "Category 1"
+        "id": 2,
+        "name": "Category 2"
       }
     },
     {
-      "title": "Book Demo CG 1",
-      "author": "Author's Book Demo CG 1",
-      "price": 50000,
-      "id": 2
+      "id": 3,
+      "title": "Book 1",
+      "author": "Book 1 Author",
+      "price": 40000,
+      "category": {
+        "id": 1,
+        "name": "Category 1"
+      }
+    },
+    {
+      "title": "Book 1",
+      "author": "Book 1 Author",
+      "price": 40000,
+      "id": 4
+    },
+    {
+      "title": "Book 2",
+      "author": "Book 2 Author",
+      "price": 40000,
+      "category": {
+        "id": 2,
+        "name": "Category 2"
+      },
+      "id": 5
+    },
+    {
+      "id": 6,
+      "title": "Book 6",
+      "author": "Book Author 6",
+      "price": 100000,
+      "category": {
+        "id": 2,
+        "name": "Category 2"
+      }
+    },
+    {
+      "title": "Book No Category",
+      "author": "Book No Category",
+      "price": 10000,
+      "id": 7
     }
   ],
   "categories": [
     {
       "id": 1,
-      "title": "Category 1"
+      "name": "Category 1"
+    },
+    {
+      "id": 2,
+      "name": "Category 2"
     }
   ]
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="p-3" (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Book's title</label>
     <textarea formControlName="title" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -19,8 +19,8 @@
 
   <div class="form-group">
     <label for="exampleFormControlSelect1">Book's Category</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option value="1">Category 1</option>
+    <select formControlName="categoryId" class="form-control" id="exampleFormControlSelect1">
+      <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
     </select>
   </div>
 
